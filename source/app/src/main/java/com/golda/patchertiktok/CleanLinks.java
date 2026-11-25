@@ -110,9 +110,9 @@ final class CleanLinks {
                     // The user may have copied something else meanwhile; never overwrite that.
                     if (text == null || !copied.contentEquals(text)) return;
                     manager.setPrimaryClip(new ClipData(current.getDescription(), new ClipData.Item(finalText)));
-                    RuntimeLog.log("clean links: expanded " + expanded.size() + " short link(s)");
+                    //RuntimeLog.log("clean links: expanded " + expanded.size() + " short link(s)");
                 } catch (RuntimeException error) {
-                    RuntimeLog.log("clean links: clipboard unavailable " + error.getClass().getSimpleName());
+                    //RuntimeLog.log("clean links: clipboard unavailable " + error.getClass().getSimpleName());
                 }
             }));
         }));
@@ -133,7 +133,7 @@ final class CleanLinks {
                 if (code < 300 || code >= 400 || location == null) return null;
                 current = new URL(new URL(current), location).toString();
             } catch (Exception error) {
-                RuntimeLog.log("clean links: short link not resolved " + error.getClass().getSimpleName());
+                //RuntimeLog.log("clean links: short link not resolved " + error.getClass().getSimpleName());
                 return null;
             } finally {
                 if (connection != null) connection.disconnect();

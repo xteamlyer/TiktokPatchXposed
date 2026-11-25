@@ -53,7 +53,7 @@ final class StreakPeople {
                 if (found != null) result.put(partner.peer, person(found));
             }
         } catch (Throwable error) {
-            RuntimeLog.log("streak names unavailable: " + error.getClass().getSimpleName());
+            // RuntimeLog.log("streak names unavailable: " + error.getClass().getSimpleName());
         }
         return result;
     }

@@ -46,7 +46,7 @@ final class DexFinder {
             try {
                 mapDexEntries(new File(path));
             } catch (IOException | RuntimeException error) {
-                RuntimeLog.log("dex index skipped " + new File(path).getName() + ": " + error.getClass().getSimpleName());
+                //RuntimeLog.log("dex index skipped " + new File(path).getName() + ": " + error.getClass().getSimpleName());
             }
         }
     }
@@ -210,7 +210,7 @@ final class DexFinder {
             if (packed.isEmpty()) return;
             int fromVdex = mapVdex(apk);
             if (fromVdex >= packed.size()) {
-                RuntimeLog.log("dex index: " + apk.getName() + " read from vdex (" + fromVdex + ")");
+                //RuntimeLog.log("dex index: " + apk.getName() + " read from vdex (" + fromVdex + ")");
                 return;
             }
             if (scratch == null) throw new IOException("compressed dex and no scratch folder");
@@ -221,8 +221,8 @@ final class DexFinder {
                 if (out.length() != entry[2]) unpack(channel, entry[0], entry[1], out);
                 dexes.add(map(out));
             }
-            RuntimeLog.log("dex index: " + apk.getName() + " unpacked " + packed.size() + " dex in "
-                    + (System.currentTimeMillis() - start) + " ms");
+            // RuntimeLog.log("dex index: " + apk.getName() + " unpacked " + packed.size() + " dex in "
+            //         + (System.currentTimeMillis() - start) + " ms");
         }
     }
 

@@ -23,8 +23,8 @@ final class DeviceChecks {
     private DeviceChecks() { }
 
     static void install(ClassLoader loader) {
-        RuntimeLog.log("device checks: root=" + installRoot(loader) + " passkey=" + installPasskey(loader)
-                + " motion=" + installMotion(loader));
+        // RuntimeLog.log("device checks: root=" + installRoot(loader) + " passkey=" + installPasskey(loader)
+        //         + " motion=" + installMotion(loader));
     }
 
     private static int installRoot(ClassLoader loader) {

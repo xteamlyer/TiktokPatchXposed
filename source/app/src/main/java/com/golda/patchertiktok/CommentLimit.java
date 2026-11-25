@@ -23,7 +23,7 @@ final class CommentLimit {
         Class<?> config = Hooks.findClass(CONFIG, loader);
         Field limit = config == null ? null : Reflect.field(config, "charLimit");
         if (limit == null) {
-            RuntimeLog.log("comment limit unavailable: limit not found");
+            //RuntimeLog.log("comment limit unavailable: limit not found");
             return;
         }
         int hooks = Hooks.hookConstructors(config, new Hooks.Hook() {
@@ -34,14 +34,14 @@ final class CommentLimit {
                 MAIN.postDelayed(Safe.run("comment limit", () -> lift(limit, made)), FILLED_IN_MS);
             }
         });
-        RuntimeLog.log("comment limit: hooks=" + hooks);
+        //RuntimeLog.log("comment limit: hooks=" + hooks);
     }
 
     private static void lift(Field limit, Object config) {
         try {
             limit.setInt(config, LIMIT);
         } catch (IllegalAccessException | IllegalArgumentException error) {
-            RuntimeLog.log("comment limit failed: " + error);
+            //RuntimeLog.log("comment limit failed: " + error);
         }
     }
 }

@@ -59,7 +59,7 @@ final class PlaybackQuality {
                 hdr++;
             }
         }
-        RuntimeLog.log("playback quality: lists=" + hooks + " hdr=" + hdr);
+        // RuntimeLog.log("playback quality: lists=" + hooks + " hdr=" + hdr);
     }
 
     private static List<?> choose(List<?> gears) {

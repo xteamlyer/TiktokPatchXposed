@@ -79,7 +79,7 @@ final class SettingsEntry {
         try {
             injectRow(loader);
         } catch (Throwable error) {
-            RuntimeLog.log("settings row unavailable: " + error);
+            // RuntimeLog.log("settings row unavailable: " + error);
         }
     }
 
@@ -165,11 +165,11 @@ final class SettingsEntry {
                     if (state == null) state = buildState(stateType, loader);
                     param.setResult(state);
                 } catch (Throwable error) {
-                    RuntimeLog.log("settings row state: " + error);
+                    // RuntimeLog.log("settings row state: " + error);
                 }
             }
         });
-        RuntimeLog.log("settings row installed; sort=" + sortHooks + " item=" + itemType.getName());
+        // RuntimeLog.log("settings row installed; sort=" + sortHooks + " item=" + itemType.getName());
     }
 
     private static Object itemMethod(Object proxy, Method method, Object[] args) {

@@ -146,7 +146,7 @@ final class Module {
         run("settings row", () -> SettingsEntry.install(app, loader));
         run("auto streaks", () -> AutoStreakManager.install(app, loader));
         run("code index release", Discovery::release);
-        RuntimeLog.log(BuildConfig.VERSION_NAME + " started in " + app.getPackageName());
+        // RuntimeLog.log(BuildConfig.VERSION_NAME + " started in " + app.getPackageName());
         run("safe mode", SafeMode::started);
     }
 
@@ -155,7 +155,7 @@ final class Module {
      * report) is installed, and the user is told why everything else is off this time.
      */
     private static void safeStartup(Application app, ClassLoader loader) {
-        RuntimeLog.log("safe mode: TikTok closed right after starting several times, features are off for this launch");
+        // RuntimeLog.log("safe mode: TikTok closed right after starting several times, features are off for this launch");
         run("language", () -> I18n.use(app.getResources().getConfiguration().getLocales().get(0)));
         run("code index", () -> Discovery.init(app));
         run("settings row", () -> SettingsEntry.install(app, loader));
@@ -178,7 +178,7 @@ final class Module {
                 reason = error.getClass().getSimpleName();
             }
             FeatureStatus.failed(name, reason);
-            RuntimeLog.log(name + " unavailable: " + error);
+            // RuntimeLog.log(name + " unavailable: " + error);
         } finally {
             FeatureStatus.end();
         }

@@ -63,8 +63,8 @@ final class Seekbar {
             }
         }
         int showType = hookShowType(loader);
-        RuntimeLog.log("seekbar: decision=" + decision + " reasons=" + reasons + " short=" + shortVideo
-                + " showType=" + showType);
+        // RuntimeLog.log("seekbar: decision=" + decision + " reasons=" + reasons + " short=" + shortVideo
+        //         + " showType=" + showType);
     }
 
     /** The decision logs its reason through (String, ...) -> void calls; remember the last one per thread. */

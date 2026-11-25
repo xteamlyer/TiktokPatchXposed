@@ -85,7 +85,7 @@ final class LiveRecord {
             try {
                 refresh();
             } catch (Throwable error) {
-                Safe.log("LIVE record timer", error);
+                // Safe.log("LIVE record timer", error);
             }
             if (recorder != null) MAIN.postDelayed(this, 1000);
         }
@@ -109,7 +109,7 @@ final class LiveRecord {
                 }
             });
         }
-        if (hooks == 0) RuntimeLog.log("LIVE record: stream model not found, reading rooms only");
+        if (hooks == 0);
         Class<?> room = Hooks.findClass(ROOM_MODEL, loader);
         int rooms = room == null ? 0 : Hooks.hookConstructors(room, new Hooks.Hook() {
             @Override protected void after(Hooks.Call param) {
@@ -131,7 +131,7 @@ final class LiveRecord {
                 if (active != null && active.owner.get() == param.thisObject) active.stop();
             }
         });
-        RuntimeLog.log("LIVE record: hooks=" + hooks + " rooms=" + rooms);
+        // RuntimeLog.log("LIVE record: hooks=" + hooks + " rooms=" + rooms);
     }
 
     /** Keeps the newest stream; the player reads it often, so an unchanged one costs a compare. */
@@ -140,7 +140,7 @@ final class LiveRecord {
         String data = (String) value;
         streamAt = SystemClock.elapsedRealtime();
         if (data == stream || data.isEmpty() || !data.contains("flv")) return;
-        if (!data.equals(stream)) RuntimeLog.log("LIVE record: stream seen (" + data.length() + " chars)");
+        if (!data.equals(stream));
         stream = data;
     }
 
@@ -248,7 +248,7 @@ final class LiveRecord {
             try {
                 return touch(view, event);
             } catch (Throwable error) {
-                Safe.log("LIVE record drag", error);
+                // Safe.log("LIVE record drag", error);
                 return false;
             }
         }
@@ -293,7 +293,7 @@ final class LiveRecord {
         }
         List<LiveStreams.Option> fromRoom = choices(roomStream(activity));
         List<LiveStreams.Option> choices = fromRoom.isEmpty() ? choices(freshStream()) : fromRoom;
-        RuntimeLog.log("LIVE record: " + (fromRoom.isEmpty() ? "room on screen not found, newest stream" : "stream of the room on screen"));
+        // RuntimeLog.log("LIVE record: " + (fromRoom.isEmpty() ? "room on screen not found, newest stream" : "stream of the room on screen"));
         if (choices.isEmpty()) {
             toast(activity, I18n.get(I18n.S.LIVE_REC_NONE));
             return;
@@ -333,7 +333,7 @@ final class LiveRecord {
             Object room = currentRoom(activity);
             return room == null ? null : streamOf(room);
         } catch (Throwable error) {
-            RuntimeLog.log("LIVE record: room stream unreadable: " + error);
+            // RuntimeLog.log("LIVE record: room stream unreadable: " + error);
             return null;
         }
     }
@@ -440,7 +440,7 @@ final class LiveRecord {
                 options.add(new LiveStreams.Option(key, flv, size[0], size[1], codec));
             }
         } catch (Throwable error) {
-            RuntimeLog.log("LIVE record: stream_data not JSON: " + error.getClass().getSimpleName());
+            // RuntimeLog.log("LIVE record: stream_data not JSON: " + error.getClass().getSimpleName());
         }
         if (LiveStreams.best(options) == null) {
             String flv = LiveStreams.firstFlv(data);
@@ -540,7 +540,7 @@ final class LiveRecord {
                             if (total > MAX_BYTES || SystemClock.elapsedRealtime() - startedAt > MAX_MS) break;
                             // Checked every ~16 MB: a full phone would stop TikTok and the gallery from working.
                             if ((total & 0xFFFFFF) < read && lowOnSpace()) {
-                                RuntimeLog.log("LIVE record: stopped, little free space");
+                                // RuntimeLog.log("LIVE record: stopped, little free space");
                                 break;
                             }
                         }
@@ -561,13 +561,13 @@ final class LiveRecord {
                 publish.put(MediaStore.MediaColumns.IS_PENDING, 0);
                 saved = resolver.update(row, publish, null, null) == 1;
             } catch (Throwable error) {
-                RuntimeLog.log("LIVE record failed after " + total + " bytes: " + error);
+                // RuntimeLog.log("LIVE record failed after " + total + " bytes: " + error);
             } finally {
                 if (row != null && !saved) {
                     try { resolver.delete(row, null, null); } catch (RuntimeException ignored) { }
                 }
                 disconnect();
-                RuntimeLog.log("LIVE record: " + (saved ? "saved " : "dropped ") + total + " bytes");
+                // RuntimeLog.log("LIVE record: " + (saved ? "saved " : "dropped ") + total + " bytes");
                 finished(this, app, saved);
             }
         }
@@ -592,10 +592,10 @@ final class LiveRecord {
                     FlvRemux.remux(() -> resolver.openInputStream(flv), out.getFileDescriptor(), width, height);
                 }
                 done = true;
-                RuntimeLog.log("LIVE record: MP4 written in " + (SystemClock.elapsedRealtime() - started) + " ms");
+                // RuntimeLog.log("LIVE record: MP4 written in " + (SystemClock.elapsedRealtime() - started) + " ms");
                 return row;
             } catch (Throwable error) {
-                RuntimeLog.log("LIVE record: kept FLV, MP4 failed: " + error);
+                // RuntimeLog.log("LIVE record: kept FLV, MP4 failed: " + error);
                 return null;
             } finally {
                 if (!done && row != null) {

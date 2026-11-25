@@ -39,7 +39,7 @@ final class CommentAuthor {
         Class<?> cell = Hooks.findClass(CELL, loader);
         Class<?> comment = Hooks.findClass(COMMENT, loader);
         if (cell == null || comment == null) {
-            RuntimeLog.log("comment author unavailable: comment cell not found");
+            //RuntimeLog.log("comment author unavailable: comment cell not found");
             return;
         }
         for (Method method : Reflect.methods(cell)) {
@@ -62,7 +62,7 @@ final class CommentAuthor {
             });
             binds++;
         }
-        RuntimeLog.log("comment author: binds=" + binds + " comment getters=" + COMMENTS.size());
+        //RuntimeLog.log("comment author: binds=" + binds + " comment getters=" + COMMENTS.size());
     }
 
     private static void bound(Object cell) {

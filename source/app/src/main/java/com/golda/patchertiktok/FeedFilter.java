@@ -48,7 +48,7 @@ final class FeedFilter {
             });
         }
         hookAdFields(loader);
-        RuntimeLog.log("feed filter installed" + (feed == null ? " (FeedItemList missing)" : ""));
+        // RuntimeLog.log("feed filter installed" + (feed == null ? " (FeedItemList missing)" : ""));
     }
 
     private static void hookFeedItemList(Class<?> feed) {
@@ -143,7 +143,7 @@ final class FeedFilter {
                 remember(list, filtered);
             }
         }) == 0) {
-            RuntimeLog.log("feed filter: For You source not found, age and own filters apply nowhere");
+            // RuntimeLog.log("feed filter: For You source not found, age and own filters apply nowhere");
         }
     }
 
@@ -319,7 +319,7 @@ final class FeedFilter {
                 } catch (Throwable ignored) { }
             }
         }
-        RuntimeLog.log("friend card insertion: " + hooked + " hook(s)");
+        // RuntimeLog.log("friend card insertion: " + hooked + " hook(s)");
         installInsertions(loader);
     }
 
@@ -376,7 +376,7 @@ final class FeedFilter {
                 hooked++;
             }
         }
-        RuntimeLog.log("feed insertions: " + hooked + " hook(s)");
+        // RuntimeLog.log("feed insertions: " + hooked + " hook(s)");
     }
 
     private static List<Method> own(Class<?> type, String hit) {

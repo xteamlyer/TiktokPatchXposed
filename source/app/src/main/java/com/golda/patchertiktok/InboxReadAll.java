@@ -51,7 +51,7 @@ final class InboxReadAll {
             }
         }
         if (tab == null || allChats == null) {
-            RuntimeLog.log("read all unavailable: " + (tab == null ? "tab" : "chat store") + " not found");
+            // RuntimeLog.log("read all unavailable: " + (tab == null ? "tab" : "chat store") + " not found");
             return;
         }
         int hooks = 0;
@@ -67,7 +67,7 @@ final class InboxReadAll {
             });
             hooks++;
         }
-        RuntimeLog.log("read all: tab hooks=" + hooks);
+        // RuntimeLog.log("read all: tab hooks=" + hooks);
     }
 
     /** A long press on the Inbox tab opens the sheet; the tab's own tap is left as it is. */
@@ -93,7 +93,7 @@ final class InboxReadAll {
         try {
             batch = load();
         } catch (Throwable error) {
-            RuntimeLog.log("read all failed: " + error.getClass().getSimpleName());
+            // RuntimeLog.log("read all failed: " + error.getClass().getSimpleName());
         } finally {
             RUNNING.set(false);
         }
@@ -224,7 +224,7 @@ final class InboxReadAll {
             batch.bulk.invoke(batch.facade, batch.chats, quiet);
             done = true;
         } catch (Throwable error) {
-            RuntimeLog.log("read all failed: " + error.getClass().getSimpleName());
+            // RuntimeLog.log("read all failed: " + error.getClass().getSimpleName());
         } finally {
             RUNNING.set(false);
         }

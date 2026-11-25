@@ -40,7 +40,7 @@ final class CommentMedia {
     static void install(ClassLoader loader) {
         commentType = Hooks.findClass(COMMENT, loader);
         if (commentType == null) {
-            RuntimeLog.log("comment media unavailable: comment model not found");
+            //RuntimeLog.log("comment media unavailable: comment model not found");
             return;
         }
         Touch.install();
@@ -66,7 +66,7 @@ final class CommentMedia {
                         try {
                             return guardedPreDraw();
                         } catch (Throwable error) {
-                            Safe.log("comment media", error);
+                            // Safe.log("comment media", error);
                             return true;
                         }
                     }

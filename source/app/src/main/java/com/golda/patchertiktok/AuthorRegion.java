@@ -43,7 +43,7 @@ final class AuthorRegion {
         installProfile(loader);
         Class<?> panel = Hooks.findClass(PANEL, loader);
         if (panel == null || (currentAweme = RenderedAdSkip.currentAweme(panel)) == null) {
-            RuntimeLog.log("author region unavailable: feed panel not found");
+            //RuntimeLog.log("author region unavailable: feed panel not found");
             return;
         }
         currentAweme.setAccessible(true);
@@ -63,7 +63,7 @@ final class AuthorRegion {
             });
             hooks++;
         }
-        RuntimeLog.log("author region: hooks=" + hooks);
+        //RuntimeLog.log("author region: hooks=" + hooks);
     }
 
     private static boolean profileWanted() {
@@ -97,7 +97,7 @@ final class AuthorRegion {
                     try {
                         guardedAfterTextChanged(text);
                     } catch (Throwable error) {
-                        Safe.log("author region", error);
+                        // Safe.log("author region", error);
                     }
                 }
 
@@ -144,7 +144,7 @@ final class AuthorRegion {
             }
         }
         if (user == null || model == null || label == null) {
-            RuntimeLog.log("author region on profiles unavailable: profile header not recognised");
+            //RuntimeLog.log("author region on profiles unavailable: profile header not recognised");
             return;
         }
         label.setAccessible(true);

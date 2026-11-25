@@ -40,7 +40,7 @@ final class RenderedAdSkip {
             });
             hooks++;
         }
-        RuntimeLog.log("rendered ad skip: hooks=" + hooks);
+        // RuntimeLog.log("rendered ad skip: hooks=" + hooks);
     }
 
     static Method currentAweme(Class<?> panel) {

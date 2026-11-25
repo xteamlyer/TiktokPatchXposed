@@ -29,7 +29,7 @@ final class CleanScreen {
         Class<?> panel = Hooks.findClass(PANEL, loader);
         Class<?> aweme = Hooks.findClass(AWEME, loader);
         if (panel == null || aweme == null) {
-            RuntimeLog.log("remember clear display unavailable: panel not found");
+            //RuntimeLog.log("remember clear display unavailable: panel not found");
             return;
         }
         Method event = null;
@@ -41,7 +41,7 @@ final class CleanScreen {
             else if (p.length == 2 && p[1] == boolean.class && p[0] == aweme) changes.add(method);
         }
         if (event == null || changes.size() != 1) {
-            RuntimeLog.log("remember clear display unavailable: panel methods not recognised");
+            //RuntimeLog.log("remember clear display unavailable: panel methods not recognised");
             return;
         }
         Method dispatch = event;
@@ -70,7 +70,7 @@ final class CleanScreen {
                 }
             }
         });
-        RuntimeLog.log("remember clear display installed");
+        //RuntimeLog.log("remember clear display installed");
     }
 
     private static void replay(Method dispatch, Object panel, Object event) {
@@ -79,7 +79,7 @@ final class CleanScreen {
             dispatch.setAccessible(true);
             dispatch.invoke(panel, event);
         } catch (Throwable error) {
-            RuntimeLog.log("remember clear display failed: " + error.getClass().getSimpleName());
+            //RuntimeLog.log("remember clear display failed: " + error.getClass().getSimpleName());
         }
     }
 }

@@ -27,7 +27,7 @@ final class Privacy {
 
     static void install() {
         int hooks = installLocation() + installVpn() + installAndroidId();
-        RuntimeLog.log("privacy: hooks=" + hooks);
+        // RuntimeLog.log("privacy: hooks=" + hooks);
     }
 
     /**

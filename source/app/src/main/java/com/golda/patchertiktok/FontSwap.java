@@ -43,7 +43,7 @@ final class FontSwap {
         if (!Prefs.on(Prefs.FONT) || Build.VERSION.SDK_INT < 26) return;
         base = load(context);
         if (base == null) {
-            RuntimeLog.log("font: nothing to load");
+            // RuntimeLog.log("font: nothing to load");
             return;
         }
         int engines = 0;
@@ -88,7 +88,7 @@ final class FontSwap {
                 engines++;
             } catch (Throwable ignored) { }
         }
-        RuntimeLog.log("font: " + Prefs.text(Prefs.FONT_SOURCE) + ", engines " + engines);
+        // RuntimeLog.log("font: " + Prefs.text(Prefs.FONT_SOURCE) + ", engines " + engines);
     }
 
     private static Typeface load(Context context) {

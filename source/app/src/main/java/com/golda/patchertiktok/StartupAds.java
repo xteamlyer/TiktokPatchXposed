@@ -46,6 +46,6 @@ final class StartupAds {
                 }
             }
         }
-        RuntimeLog.log("startup ads: tasks=" + tasks + " gates=" + gates);
+        // RuntimeLog.log("startup ads: tasks=" + tasks + " gates=" + gates);
     }
 }

@@ -30,8 +30,8 @@ final class AbOverrides {
         if (settings != null) hooks += hookGetters(settings);
         Class<?> ab = Discovery.firstClass(loader, AB_MANAGER_FINGERPRINT);
         if (ab != null) hooks += hookGetters(ab);
-        RuntimeLog.log("A/B overrides: " + VALUES.size() + " keys, " + hooks + " getters"
-                + (ab == null ? " (ABManager not found)" : " in " + ab.getName()));
+        //RuntimeLog.log("A/B overrides: " + VALUES.size() + " keys, " + hooks + " getters"
+                // + (ab == null ? " (ABManager not found)" : " in " + ab.getName()));
     }
 
     private static void collect() {

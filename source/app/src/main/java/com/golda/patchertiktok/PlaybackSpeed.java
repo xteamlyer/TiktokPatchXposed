@@ -80,19 +80,19 @@ final class PlaybackSpeed {
         try {
             installRemember(loader);
         } catch (Throwable error) {
-            logOnce("remember-install", "remember hooks unavailable: " + error.getClass().getSimpleName());
+            // logOnce("remember-install", "remember hooks unavailable: " + error.getClass().getSimpleName());
         }
         try {
             installMenu(loader);
         } catch (Throwable error) {
-            logOnce("menu-install", "custom menu unavailable: " + error.getClass().getSimpleName());
+            // logOnce("menu-install", "custom menu unavailable: " + error.getClass().getSimpleName());
         }
     }
 
     private static void installRemember(ClassLoader loader) throws Throwable {
         Class<?> aweme = Hooks.findClass(AWEME, loader);
         if (aweme == null) {
-            logOnce("remember-install", "remember hooks unavailable: Aweme missing");
+            // logOnce("remember-install", "remember hooks unavailable: Aweme missing");
             return;
         }
         // All three source literals occur in the same static selection method in 47.1.4.
@@ -102,7 +102,7 @@ final class PlaybackSpeed {
         Set<Method> candidates = matching(loader, selections, true, void.class,
                 float.class, aweme, String.class, String.class);
         if (candidates.size() != 1) {
-            logOnce("remember-install", "remember hooks unavailable: selection anchor missing or ambiguous");
+            // logOnce("remember-install", "remember hooks unavailable: selection anchor missing or ambiguous");
             return;
         }
         Method select = candidates.iterator().next();
@@ -114,7 +114,7 @@ final class PlaybackSpeed {
             if (signature(method, true, boolean.class, aweme)
                     && calls(method).contains(AWEME + "#isCanPlay")) {
                 if (gate != null) {
-                    logOnce("remember-install", "remember hooks unavailable: ambiguous eligibility gate");
+                    // logOnce("remember-install", "remember hooks unavailable: ambiguous eligibility gate");
                     return;
                 }
                 gate = method;
@@ -122,7 +122,7 @@ final class PlaybackSpeed {
             if (signature(method, true, void.class, aweme, String.class)
                     && calls(method).contains(manager.getName() + "#" + select.getName())) {
                 if (restore != null) {
-                    logOnce("remember-install", "remember hooks unavailable: ambiguous restore");
+                    // logOnce("remember-install", "remember hooks unavailable: ambiguous restore");
                     return;
                 }
                 restore = method;
@@ -132,7 +132,7 @@ final class PlaybackSpeed {
         }
         if (gate == null || restore == null || getters.isEmpty()
                 || !calls(restore).contains(manager.getName() + "#" + gate.getName())) {
-            logOnce("remember-install", "remember hooks unavailable: restore, gate or speed getters missing");
+            // logOnce("remember-install", "remember hooks unavailable: restore, gate or speed getters missing");
             return;
         }
         select.setAccessible(true);
@@ -175,7 +175,7 @@ final class PlaybackSpeed {
                 }
             });
         }
-        logOnce("remember-installed", "remember hooks installed; speed readers=" + getters.size());
+        // logOnce("remember-installed", "remember hooks installed; speed readers=" + getters.size());
     }
 
     private static boolean explicitChoice(Object source) {
@@ -198,7 +198,7 @@ final class PlaybackSpeed {
             try {
                 return Boolean.TRUE.equals(gate.invoke(null, aweme));
             } catch (Throwable error) {
-                logOnce("eligibility", "remember skipped: eligibility invocation failed");
+                // logOnce("eligibility", "remember skipped: eligibility invocation failed");
                 return false;
             } finally {
                 CHECKING.remove();
@@ -212,7 +212,7 @@ final class PlaybackSpeed {
                 // The native selection path updates fields, player callbacks and menu state together.
                 select.invoke(null, getSpeed(), aweme, eventType == null ? "" : eventType, "");
             } catch (Throwable error) {
-                logOnce("apply", "remember skipped: native speed application failed");
+                // logOnce("apply", "remember skipped: native speed application failed");
             } finally {
                 APPLYING.remove();
             }
@@ -224,12 +224,12 @@ final class PlaybackSpeed {
         try {
             installInlineMenu(loader);
         } catch (Throwable error) {
-            logOnce("inline-install", "custom inline menu unavailable: " + error.getClass().getSimpleName());
+            // logOnce("inline-install", "custom inline menu unavailable: " + error.getClass().getSimpleName());
         }
         try {
             installSheetMenu(loader);
         } catch (Throwable error) {
-            logOnce("sheet-install", "custom speed sheet unavailable: " + error.getClass().getSimpleName());
+            // logOnce("sheet-install", "custom speed sheet unavailable: " + error.getClass().getSimpleName());
         }
     }
 
@@ -239,7 +239,7 @@ final class PlaybackSpeed {
     private static void installInlineMenu(ClassLoader loader) {
         Class<?> sharePackage = Hooks.findClass("com.ss.android.ugc.aweme.share.base.model.BaseSharePackage", loader);
         if (sharePackage == null) {
-            logOnce("inline-install", "custom inline menu unavailable: BaseSharePackage missing");
+            // logOnce("inline-install", "custom inline menu unavailable: BaseSharePackage missing");
             return;
         }
         Set<Method> providers = new LinkedHashSet<>();
@@ -284,7 +284,7 @@ final class PlaybackSpeed {
             }
         }
         if (providers.size() != 1) {
-            logOnce("inline-install", "custom inline menu unavailable: row list provider missing or ambiguous");
+            // logOnce("inline-install", "custom inline menu unavailable: row list provider missing or ambiguous");
             return;
         }
         // A row can be reused. Freeze its values between binds so label/index lookups stay aligned
@@ -295,14 +295,14 @@ final class PlaybackSpeed {
                     try {
                         Hooks.setExtra(call.thisObject, INLINE_SPEEDS, null);
                     } catch (Throwable error) {
-                        logOnce("inline-bind", "custom inline menu skipped: row binding failed");
+                        // logOnce("inline-bind", "custom inline menu skipped: row binding failed");
                     }
                 }
             });
         }
         hookSpeedList(providers.iterator().next(), "inline", true);
         INLINE_PROVIDER = providers.iterator().next();
-        logOnce("inline-installed", "custom inline menu hook installed");
+        // logOnce("inline-installed", "custom inline menu hook installed");
     }
 
     private static void installSheetMenu(ClassLoader loader) {
@@ -341,11 +341,11 @@ final class PlaybackSpeed {
                     true, List.class));
         }
         if (factories.size() != 1) {
-            logOnce("sheet-install", "custom speed sheet unavailable: list factory missing or ambiguous");
+            // logOnce("sheet-install", "custom speed sheet unavailable: list factory missing or ambiguous");
             return;
         }
         hookSpeedList(factories.iterator().next(), "sheet", false);
-        logOnce("sheet-installed", "custom speed sheet hook installed");
+        // logOnce("sheet-installed", "custom speed sheet hook installed");
     }
 
     private static void hookSpeedList(Method provider, String surface, boolean inline) {
@@ -357,7 +357,7 @@ final class PlaybackSpeed {
                     boolean custom = configured != null && !configured.trim().isEmpty();
                     if (!inline && !custom) return;
                     if (!nativeSpeedList(call.getResult())) {
-                        logOnce(surface + "-shape", "custom " + surface + " menu skipped: unexpected native speed list");
+                        // logOnce(surface + "-shape", "custom " + surface + " menu skipped: unexpected native speed list");
                         return;
                     }
                     if (inline) {
@@ -366,7 +366,7 @@ final class PlaybackSpeed {
                             call.setResult(new ArrayList<>((List<?>) snapshot));
                             return;
                         }
-                        logOnce("inline-reached", "inline menu speed provider reached");
+                        // logOnce("inline-reached", "inline menu speed provider reached");
                         if (!custom) {
                             Hooks.setExtra(call.thisObject, INLINE_SPEEDS, new ArrayList<>((List<?>) call.getResult()));
                             return;
@@ -381,9 +381,9 @@ final class PlaybackSpeed {
                     if (inline) Hooks.setExtra(call.thisObject, INLINE_SPEEDS, current.values);
                     // Return a fresh mutable list: native callers may sort or remove an option.
                     call.setResult(new ArrayList<>(current.values));
-                    logOnce(surface + "-replaced", "custom " + surface + " menu applied; options=" + current.values.size());
+                    // logOnce(surface + "-replaced", "custom " + surface + " menu applied; options=" + current.values.size());
                 } catch (Throwable error) {
-                    logOnce(surface + "-callback", "custom " + surface + " menu skipped: list replacement failed");
+                    // logOnce(surface + "-callback", "custom " + surface + " menu skipped: list replacement failed");
                 }
             }
         });
@@ -442,7 +442,7 @@ final class PlaybackSpeed {
         try {
             Context context = context(source);
             if (context == null) {
-                logOnce("preferences-context", "speed storage waits for the application context");
+                // logOnce("preferences-context", "speed storage waits for the application context");
                 return null;
             }
             Context app = context.getApplicationContext();
@@ -452,7 +452,7 @@ final class PlaybackSpeed {
             preferences = prefs;
             return prefs;
         } catch (Throwable error) {
-            logOnce("preferences", "speed storage unavailable: " + error.getClass().getSimpleName());
+            // logOnce("preferences", "speed storage unavailable: " + error.getClass().getSimpleName());
             return null;
         }
     }
@@ -483,7 +483,7 @@ final class PlaybackSpeed {
             chosenSpeed = Float.isFinite(value) ? clamp(value) : 1f;
         } catch (Throwable error) {
             chosenSpeed = 1f;
-            logOnce("preferences-read", "saved speed unavailable; using 1x");
+            // logOnce("preferences-read", "saved speed unavailable; using 1x");
         }
     }
 
@@ -494,14 +494,14 @@ final class PlaybackSpeed {
         try {
             prefs.edit().putFloat(KEY, value).apply();
         } catch (Throwable error) {
-            logOnce("preferences-write", "speed persistence unavailable; keeping the in-memory choice");
+            // logOnce("preferences-write", "speed persistence unavailable; keeping the in-memory choice");
         }
     }
 
     private static void logOnce(String key, String message) {
         if (!LOGGED.add(key)) return;
         try {
-            RuntimeLog.log("playback speed: " + message);
+            // RuntimeLog.log("playback speed: " + message);
         } catch (Throwable ignored) { }
     }
 }

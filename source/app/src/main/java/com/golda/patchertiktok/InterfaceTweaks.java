@@ -15,7 +15,7 @@ final class InterfaceTweaks {
     static void install(ClassLoader loader) {
         Class<?> stories = Hooks.findClass(INBOX_STORIES, loader);
         if (stories == null) {
-            RuntimeLog.log("inbox stories switch unavailable");
+            // RuntimeLog.log("inbox stories switch unavailable");
         } else {
             Hooks.hookAll(stories, "enable", new Hooks.Hook() {
                 @Override protected void after(Hooks.Call param) {
@@ -25,7 +25,7 @@ final class InterfaceTweaks {
         }
         Class<?> suggested = Hooks.findClass(INBOX_SUGGESTED, loader);
         if (suggested == null) {
-            RuntimeLog.log("inbox suggestions switch unavailable");
+            // RuntimeLog.log("inbox suggestions switch unavailable");
         } else {
             Hooks.hookAll(suggested, "enable", new Hooks.Hook() {
                 @Override protected void after(Hooks.Call param) {
@@ -35,7 +35,7 @@ final class InterfaceTweaks {
         }
         Class<?> login = Hooks.findClass(LOGIN_WALL, loader);
         if (login == null) {
-            RuntimeLog.log("login wall switch unavailable");
+            // RuntimeLog.log("login wall switch unavailable");
             return;
         }
         Hooks.Hook never = new Hooks.Hook() {

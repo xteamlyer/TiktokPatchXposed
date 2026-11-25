@@ -41,7 +41,7 @@ final class Ghost {
         Class<?> interceptor = Hooks.findClass(INTERCEPTOR, loader);
         Class<?> request = Hooks.findClass(REQUEST, loader);
         if (interceptor == null || request == null) {
-            RuntimeLog.log("invisible mode unavailable: network classes not found");
+            // RuntimeLog.log("invisible mode unavailable: network classes not found");
             return;
         }
         int hooks = 0;
@@ -66,8 +66,8 @@ final class Ghost {
             });
             hooks++;
         }
-        RuntimeLog.log("invisible mode: hooks=" + hooks + ", typing=" + installTyping(loader)
-                + ", highlights=" + installHighlights(loader));
+        // RuntimeLog.log("invisible mode: hooks=" + hooks + ", typing=" + installTyping(loader)
+        //         + ", highlights=" + installHighlights(loader));
     }
 
     /** Remembers, for every story the viewer binds, whether it belongs to a profile highlight. */

@@ -43,7 +43,7 @@ final class Recommendation {
                     }
                 });
             } catch (Throwable error) {
-                RuntimeLog.log("content language unavailable: " + error.getClass().getSimpleName());
+                // RuntimeLog.log("content language unavailable: " + error.getClass().getSimpleName());
             }
         }
         Class<?> guide = Hooks.findClass(

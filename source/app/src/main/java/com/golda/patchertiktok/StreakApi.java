@@ -43,11 +43,11 @@ final class StreakApi {
                         if (!param.hasThrowable()) capturedProvider = param.thisObject;
                     }
                 });
-                RuntimeLog.log("streak provider: " + name);
+                // RuntimeLog.log("streak provider: " + name);
                 return;
             } catch (Throwable ignored) { }
         }
-        RuntimeLog.log("streak provider not found");
+        // RuntimeLog.log("streak provider not found");
     }
 
     StreakApi(ClassLoader loader) throws ReflectiveOperationException {

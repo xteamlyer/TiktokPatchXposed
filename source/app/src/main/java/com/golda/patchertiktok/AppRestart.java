@@ -31,7 +31,7 @@ final class AppRestart {
         try {
             activity.startActivity(trampoline);
         } catch (RuntimeException error) {
-            RuntimeLog.log("restart trampoline unavailable: " + error.getClass().getSimpleName());
+            //RuntimeLog.log("restart trampoline unavailable: " + error.getClass().getSimpleName());
         }
         activity.getWindow().getDecorView().postDelayed(() -> {
             Process.killProcess(Process.myPid());

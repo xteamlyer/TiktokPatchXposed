@@ -47,7 +47,7 @@ final class StoriesSeen {
         Class<?> user = Hooks.findClass(USER, loader);
         Class<?> metadata = Hooks.findClass(METADATA, loader);
         if (user == null || metadata == null) {
-            RuntimeLog.log("stories seen unavailable: story metadata not found");
+            // RuntimeLog.log("stories seen unavailable: story metadata not found");
             return;
         }
         int hooks = Hooks.hookAll(user, "getAllStoryMetadata", new Hooks.Hook() {
@@ -61,7 +61,7 @@ final class StoriesSeen {
                 correct(param.thisObject);
             }
         });
-        RuntimeLog.log("stories seen: hooks=" + hooks);
+        // RuntimeLog.log("stories seen: hooks=" + hooks);
     }
 
     /** Called with the id of a story whose view was just hidden. */
@@ -125,7 +125,7 @@ final class StoriesSeen {
         } catch (EOFException end) {
             // The whole file is read; a cut-off last id is simply dropped.
         } catch (Exception error) {
-            RuntimeLog.log("stories seen: list not read, " + error.getClass().getSimpleName());
+            // RuntimeLog.log("stories seen: list not read, " + error.getClass().getSimpleName());
         }
     }
 

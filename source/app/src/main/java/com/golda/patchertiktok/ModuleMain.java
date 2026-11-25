@@ -33,7 +33,7 @@ public final class ModuleMain extends XposedModule {
         }
 
         @Override public void log(String message) {
-            ModuleMain.this.log(Log.INFO, "TiktokPatchXposed", message);
+            // ModuleMain.this.log(Log.INFO, "TiktokPatchXposed", message);
         }
     }
 

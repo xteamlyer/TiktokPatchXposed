@@ -60,7 +60,7 @@ final class ExactCounts {
             });
         }
         int profile = installProfile(loader);
-        RuntimeLog.log("exact counts: shorteners=" + shorteners.size() + " profile=" + profile);
+        //RuntimeLog.log("exact counts: shorteners=" + shorteners.size() + " profile=" + profile);
     }
 
     private static int installProfile(ClassLoader loader) {

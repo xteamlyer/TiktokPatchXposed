@@ -71,7 +71,7 @@ final class ExactTime {
             });
         }
         int feed = installFeed(loader);
-        RuntimeLog.log("exact time: scopes=" + scopes + " helpers=" + helpers.size() + " feed=" + feed);
+        //RuntimeLog.log("exact time: scopes=" + scopes + " helpers=" + helpers.size() + " feed=" + feed);
     }
 
     /** Static (long) or (long, Context) -> String methods a screen calls: TikTok's date helpers. */

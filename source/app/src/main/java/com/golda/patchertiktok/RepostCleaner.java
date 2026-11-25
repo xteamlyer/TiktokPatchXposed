@@ -83,7 +83,7 @@ final class RepostCleaner {
             if (!Reflect.getBoolean(answer, "hasMore") || barren >= BARREN_PAGES) break;
             Thread.sleep(PAGE_PAUSE_MS);
         }
-        RuntimeLog.log("repost cleaner: " + found.size() + " reposts");
+        // RuntimeLog.log("repost cleaner: " + found.size() + " reposts");
         return new ArrayList<>(found.values());
     }
 
@@ -104,12 +104,12 @@ final class RepostCleaner {
                 failures = 0;
                 progress.removed(++done);
             } catch (IOException | InvocationTargetException error) {
-                RuntimeLog.log("repost cleaner: one refused, " + error);
+                // RuntimeLog.log("repost cleaner: one refused, " + error);
                 if (++failures >= MAX_FAILURES) break;
             }
             Thread.sleep(PAUSE_MS);
         }
-        RuntimeLog.log("repost cleaner: removed " + done + " of " + reposts.size());
+        // RuntimeLog.log("repost cleaner: removed " + done + " of " + reposts.size());
         return done;
     }
 

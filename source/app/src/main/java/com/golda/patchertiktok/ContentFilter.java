@@ -85,7 +85,7 @@ final class ContentFilter {
     static void installSearch(ClassLoader loader) {
         Class<?> item = Hooks.findClass(SEARCH_ITEM, loader);
         if (item == null) {
-            RuntimeLog.log("search ads filter unavailable");
+            //RuntimeLog.log("search ads filter unavailable");
             return;
         }
         Hooks.Hook none = new Hooks.Hook() {
@@ -115,7 +115,7 @@ final class ContentFilter {
                 hooks++;
             } catch (Throwable ignored) { }
         }
-        RuntimeLog.log("search ads filter: hooks=" + hooks);
+        //RuntimeLog.log("search ads filter: hooks=" + hooks);
     }
 
     private static long number(Object value) {

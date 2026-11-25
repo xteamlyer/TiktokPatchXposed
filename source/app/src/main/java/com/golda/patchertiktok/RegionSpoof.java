@@ -44,8 +44,8 @@ final class RegionSpoof {
         hookRequestParams(loader, selected, feed);
         String zone = hookTimeZone(feed);
         int offsets = zone == null ? 0 : hookOffsetParam(loader, zone);
-        RuntimeLog.log("region spoof: " + selected.iso + " " + selected.operator + ", feed " + feed.iso
-                + ", offset params=" + offsets);
+        // RuntimeLog.log("region spoof: " + selected.iso + " " + selected.operator + ", feed " + feed.iso
+        //         + ", offset params=" + offsets);
     }
 
     /**
@@ -156,7 +156,7 @@ final class RegionSpoof {
             Hooks.findAndHook(type, "get", String.class, hook);
             Hooks.findAndHook(type, "get", String.class, String.class, hook);
         } catch (Throwable error) {
-            RuntimeLog.log("system properties spoof unavailable: " + error.getClass().getSimpleName());
+            // RuntimeLog.log("system properties spoof unavailable: " + error.getClass().getSimpleName());
         }
     }
 
@@ -169,7 +169,7 @@ final class RegionSpoof {
     private static void hookRequestParams(ClassLoader loader, Regions.Region selected, Regions.Region feed) {
         Class<?> producer = Hooks.findClass(FEATURE_PRODUCER, loader);
         if (producer == null) {
-            RuntimeLog.log("request region params unavailable: FeatureProducer not found");
+            // RuntimeLog.log("request region params unavailable: FeatureProducer not found");
             return;
         }
         String sim = selected.iso.toUpperCase(Locale.ROOT);
@@ -201,7 +201,7 @@ final class RegionSpoof {
             });
             hooks++;
         }
-        RuntimeLog.log("request region params: " + hooks + " getters");
+        // RuntimeLog.log("request region params: " + hooks + " getters");
     }
 
     /**
@@ -228,7 +228,7 @@ final class RegionSpoof {
                 @Override protected void after(Hooks.Call param) { converting.get()[0]--; }
             });
         } catch (Throwable error) {
-            RuntimeLog.log("time zone spoof unavailable: " + error.getClass().getSimpleName());
+            // RuntimeLog.log("time zone spoof unavailable: " + error.getClass().getSimpleName());
             return null;
         }
         return zone;

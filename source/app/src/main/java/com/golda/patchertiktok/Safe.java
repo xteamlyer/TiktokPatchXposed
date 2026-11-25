@@ -44,7 +44,7 @@ final class Safe {
 
     static void log(String where, Throwable error) {
         try {
-            RuntimeLog.log(where + " failed: " + error);
+            // RuntimeLog.log(where + " failed: " + error);
         } catch (Throwable ignored) {
             // Nothing left to report with.
         }

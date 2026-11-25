@@ -42,7 +42,7 @@ final class Hooks {
             try {
                 call.setResult(replace(call));
             } catch (Throwable error) {
-                log("replace failed: " + error);
+                // log("replace failed: " + error);
             }
         }
     }
@@ -135,7 +135,7 @@ final class Hooks {
             hook(target, hook);
             return true;
         } catch (Throwable error) {
-            log("skipped hook " + target.getDeclaringClass().getName() + "#" + target.getName() + ": " + error);
+            // log("skipped hook " + target.getDeclaringClass().getName() + "#" + target.getName() + ": " + error);
             return false;
         }
     }
@@ -219,7 +219,7 @@ final class Hooks {
             hook.before(call);
         } catch (Throwable error) {
             call.returnEarly = false;
-            log("hook failed: " + error);
+            // log("hook failed: " + error);
         }
     }
 
@@ -230,7 +230,7 @@ final class Hooks {
             hook.after(call);
         } catch (Throwable error) {
             call.finish(result, throwable);
-            log("hook failed: " + error);
+            // log("hook failed: " + error);
         }
     }
 }

@@ -79,7 +79,7 @@ final class AccentColor {
             }
             hooks += Hooks.hookConstructors(android.graphics.ColorMatrixColorFilter.class, MATRIX);
         }
-        RuntimeLog.log("colors: hooks=" + hooks + " accent=" + recolor + " amoled=" + amoled);
+        //RuntimeLog.log("colors: hooks=" + hooks + " accent=" + recolor + " amoled=" + amoled);
     }
 
     /**
@@ -91,7 +91,7 @@ final class AccentColor {
         if (!recolor) return;
         Class<?> icon = Hooks.findClass(TUX_ICON, loader);
         if (icon == null) {
-            RuntimeLog.log("accent color: picture icons not found");
+            //RuntimeLog.log("accent color: picture icons not found");
             return;
         }
         // Every Tux icon is tinted through one static (Drawable, color) helper, including the color

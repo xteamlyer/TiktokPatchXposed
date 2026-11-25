@@ -30,7 +30,7 @@ final class StoryDownload {
         Class<?> monitor = Hooks.findClass(MONITOR, loader);
         itemType = Hooks.findClass(ITEM, loader);
         if (monitor == null || itemType == null) {
-            RuntimeLog.log("story download unavailable: long-press monitor not found");
+            // RuntimeLog.log("story download unavailable: long-press monitor not found");
             return;
         }
         Touch.install();
@@ -50,7 +50,7 @@ final class StoryDownload {
             });
             hooks++;
         }
-        RuntimeLog.log("story download: hooks=" + hooks);
+        // RuntimeLog.log("story download: hooks=" + hooks);
     }
 
     private static void held(Object component) {

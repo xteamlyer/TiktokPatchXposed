@@ -44,13 +44,13 @@ final class UnsentMessages {
         classLoader = loader;
         Class<?> model = model(loader);
         if (model == null) {
-            RuntimeLog.log("unsent messages unavailable: message model not found");
+            // RuntimeLog.log("unsent messages unavailable: message model not found");
             return;
         }
         Method status = Reflect.method(model, "getMessageStatus");
         Object available = constant(status.getReturnType(), "AVAILABLE");
         if (available == null) {
-            RuntimeLog.log("unsent messages unavailable: message status not recognised");
+            // RuntimeLog.log("unsent messages unavailable: message status not recognised");
             return;
         }
         RECALLERS.addAll(Discovery.classesUsing("RecallMsgFeature"));
@@ -87,8 +87,8 @@ final class UnsentMessages {
         int guards = Hooks.hookAll(model, "setContent", keepContent) + Hooks.hookAll(model, "setContentPB", keepContent);
         int attachments = keepAttachments(loader);
         installed = hooks > 0;
-        RuntimeLog.log("unsent messages: hooks=" + hooks + " guards=" + guards + " attachments=" + attachments
-                + " recallers=" + RECALLERS.size());
+        // RuntimeLog.log("unsent messages: hooks=" + hooks + " guards=" + guards + " attachments=" + attachments
+        //         + " recallers=" + RECALLERS.size());
     }
 
     /**

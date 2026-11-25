@@ -16,7 +16,7 @@ final class LiveButton {
     static void install(ClassLoader loader) {
         Class<?> generator = Hooks.findClass(GENERATOR, loader);
         if (generator == null) {
-            RuntimeLog.log("LIVE button: generator not found");
+            // RuntimeLog.log("LIVE button: generator not found");
             return;
         }
         for (Method method : Reflect.methods(generator)) {

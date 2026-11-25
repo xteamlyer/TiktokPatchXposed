@@ -34,7 +34,7 @@ final class Unmute {
         Class<?> muteInfo = Hooks.findClass(MUTE_INFO, loader);
         Class<?> aweme = Hooks.findClass(AWEME, loader);
         if (player == null || music == null || muteInfo == null || aweme == null) {
-            RuntimeLog.log("unmute: models missing");
+            // RuntimeLog.log("unmute: models missing");
             return;
         }
         int deciders = hookDecision(player, aweme);
@@ -53,7 +53,7 @@ final class Unmute {
             });
         }
         int search = hookSearch(loader, aweme);
-        RuntimeLog.log("unmute: player " + deciders + ", search " + search);
+        // RuntimeLog.log("unmute: player " + deciders + ", search " + search);
     }
 
     private static boolean active() {

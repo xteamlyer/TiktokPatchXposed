@@ -40,7 +40,7 @@ final class StreakNotice {
             manager.notify(ID, notification);
         } catch (RuntimeException error) {
             // Notifications may be disabled for TikTok; the check log still records the failure.
-            RuntimeLog.log("streak notice unavailable: " + error.getClass().getSimpleName());
+            // RuntimeLog.log("streak notice unavailable: " + error.getClass().getSimpleName());
         }
     }
 }

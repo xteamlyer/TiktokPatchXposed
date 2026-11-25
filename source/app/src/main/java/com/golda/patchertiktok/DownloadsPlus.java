@@ -90,7 +90,7 @@ public final class DownloadsPlus {
             if (!photosAvailable) photos = "discovery unavailable";
         }
         status = "downloads: video " + video + ", photos " + photos;
-        if (!videoAvailable || !photosAvailable) RuntimeLog.log(status);
+        if (!videoAvailable || !photosAvailable);
     }
 
     private static boolean hookAction(ClassLoader loader, Class<?> aweme, String first, String second, boolean photo) {

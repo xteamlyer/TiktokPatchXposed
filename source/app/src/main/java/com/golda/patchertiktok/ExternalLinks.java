@@ -62,7 +62,7 @@ final class ExternalLinks {
             if (type != null && Activity.class.isAssignableFrom(type)) browsers.add(name);
         }
         if (browsers.isEmpty()) {
-            RuntimeLog.log("external browser unavailable: browser activities not found");
+            //RuntimeLog.log("external browser unavailable: browser activities not found");
             return;
         }
         SparkLookup spark = SparkLookup.find(loader);
@@ -120,8 +120,8 @@ final class ExternalLinks {
                 break;
             }
         }
-        RuntimeLog.log("external browser: activities=" + browsers.size() + " hooks=" + hooks
-                + " sparkLookup=" + (spark != null) + " bio=" + bio + (hooks == 0 ? " (unavailable)" : ""));
+        // RuntimeLog.log("external browser: activities=" + browsers.size() + " hooks=" + hooks
+        //         + " sparkLookup=" + (spark != null) + " bio=" + bio + (hooks == 0 ? " (unavailable)" : ""));
     }
 
     /** TikTok's web containers: the known activities and any other screen of its Spark web framework. */

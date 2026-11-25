@@ -61,7 +61,7 @@ final class AutoScroll {
     static void install(ClassLoader loader) {
         Class<?> panelType = Hooks.findClass(PANEL, loader);
         if (panelType == null) {
-            RuntimeLog.log("auto-scroll unavailable: feed panel not found");
+            //RuntimeLog.log("auto-scroll unavailable: feed panel not found");
             return;
         }
         currentAweme = RenderedAdSkip.currentAweme(panelType);
@@ -73,7 +73,7 @@ final class AutoScroll {
             if (pager == null && PAGER.equals(type)) pager = method;
         }
         if (currentAweme == null || playerAbility == null || pager == null) {
-            RuntimeLog.log("auto-scroll unavailable: player or pager not found");
+            //RuntimeLog.log("auto-scroll unavailable: player or pager not found");
             return;
         }
         currentAweme.setAccessible(true);
@@ -105,7 +105,7 @@ final class AutoScroll {
     static void installNative(ClassLoader loader) {
         Class<?> component = Hooks.findClass(NATIVE, loader);
         if (component == null) {
-            RuntimeLog.log("native auto-scroll limit unavailable: component not found");
+            //RuntimeLog.log("native auto-scroll limit unavailable: component not found");
             return;
         }
         Method key = null;
@@ -128,7 +128,7 @@ final class AutoScroll {
                 hooks++;
             }
         }
-        RuntimeLog.log("native auto-scroll limit: steps=" + hooks);
+        //RuntimeLog.log("native auto-scroll limit: steps=" + hooks);
     }
 
     private static Method own(Class<?> type, String hit) {
@@ -148,7 +148,7 @@ final class AutoScroll {
     static void installSharePanel(ClassLoader loader) {
         Class<?> pack = Hooks.findClass(SHARE_PACKAGE, loader);
         if (pack == null) {
-            RuntimeLog.log("auto-scroll share panel unavailable: share package not found");
+            //RuntimeLog.log("auto-scroll share panel unavailable: share package not found");
             return;
         }
         Touch.install();
@@ -174,7 +174,7 @@ final class AutoScroll {
                         try {
                             return guardedPreDraw();
                         } catch (Throwable error) {
-                            Safe.log("auto-scroll switch", error);
+                            // Safe.log("auto-scroll switch", error);
                             return true;
                         }
                     }
@@ -298,7 +298,7 @@ final class AutoScroll {
                 try {
                     return guardedPreDraw();
                 } catch (Throwable error) {
-                    Safe.log("auto-scroll switch", error);
+                    // Safe.log("auto-scroll switch", error);
                     return true;
                 }
             }
@@ -436,7 +436,7 @@ final class AutoScroll {
             try {
                 step();
             } catch (Throwable error) {
-                Safe.log("auto-scroll", error);
+                // Safe.log("auto-scroll", error);
             }
         }
 

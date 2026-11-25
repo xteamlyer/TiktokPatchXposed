@@ -43,7 +43,7 @@ public final class MainHook implements IXposedHookLoadPackage {
         }
 
         @Override public void log(String message) {
-            XposedBridge.log("TiktokPatchXposed: " + message);
+            // XposedBridge.log("TiktokPatchXposed: " + message);
         }
     }
 }

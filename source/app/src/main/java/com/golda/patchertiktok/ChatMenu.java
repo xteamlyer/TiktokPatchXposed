@@ -44,13 +44,13 @@ final class ChatMenu {
         Class<?> slot = Hooks.findClass(SLOT, loader);
         Class<?> template = Hooks.findClass(TEMPLATE, loader);
         if (press == null || slot == null || template == null) {
-            RuntimeLog.log("chat menu unavailable: classes not found");
+            //RuntimeLog.log("chat menu unavailable: classes not found");
             return;
         }
         for (Method method : Reflect.methods(slot)) {
             if (method.getParameterTypes().length == 0 && method.getReturnType() == template && !Modifier.isStatic(method.getModifiers())) {
                 if (templateGetter != null) {
-                    RuntimeLog.log("chat menu unavailable: sticker getter ambiguous");
+                    //RuntimeLog.log("chat menu unavailable: sticker getter ambiguous");
                     templateGetter = null;
                     return;
                 }
@@ -58,7 +58,7 @@ final class ChatMenu {
             }
         }
         if (templateGetter == null) {
-            RuntimeLog.log("chat menu unavailable: sticker getter not found");
+            //RuntimeLog.log("chat menu unavailable: sticker getter not found");
             return;
         }
         templateGetter.setAccessible(true);
@@ -88,7 +88,7 @@ final class ChatMenu {
             });
             menus++;
         }
-        RuntimeLog.log("chat menu: binds=" + binds + " menus=" + menus);
+        //RuntimeLog.log("chat menu: binds=" + binds + " menus=" + menus);
     }
 
     /** The menu's payload: the pressed bubble, the message and TikTok's action list. */
@@ -133,7 +133,7 @@ final class ChatMenu {
                 try {
                     return guardedPreDraw();
                 } catch (Throwable error) {
-                    Safe.log("chat menu", error);
+                    // Safe.log("chat menu", error);
                     return true;
                 }
             }

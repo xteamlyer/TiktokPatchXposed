@@ -28,7 +28,7 @@ final class Brightness {
             Class<?> type = Hooks.findClass(parts[0], loader);
             if (type != null && type != manager) hooks += hookStarts(type, parts[1], owner);
         }
-        RuntimeLog.log("keep brightness: starts=" + hooks);
+        //RuntimeLog.log("keep brightness: starts=" + hooks);
     }
 
     /** Static void (x, LifecycleOwner, y) methods of {@code type} (named {@code name} when given). */

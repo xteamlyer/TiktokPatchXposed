@@ -57,7 +57,7 @@ final class StreakSticker {
         // Analytics also use the name; the right class is the enum the send method takes, chosen later.
         List<String> names = new ArrayList<>(Discovery.classesUsing(PANEL_SOURCE));
         sourceEnums = names;
-        if (names.isEmpty()) RuntimeLog.log("streak sticker unavailable: sticker send source not found");
+        if (names.isEmpty());
     }
 
 
@@ -99,7 +99,7 @@ final class StreakSticker {
             }
         }
         if (item == null) {
-            RuntimeLog.log("streak sticker skipped: sticker is no longer a favourite");
+            // RuntimeLog.log("streak sticker skipped: sticker is no longer a favourite");
             return null;
         }
         try {
@@ -108,7 +108,7 @@ final class StreakSticker {
             Object service = api.getClass().getMethod("getImStickerMessageService").invoke(api);
             Method method = sendMethod(service.getClass(), itemType);
             if (method == null) {
-                RuntimeLog.log("streak sticker unavailable: sticker send method not recognised");
+                // RuntimeLog.log("streak sticker unavailable: sticker send method not recognised");
                 return null;
             }
             Object[] args = arguments(method, context.getApplicationContext(), item, conversation, loader);
@@ -126,7 +126,7 @@ final class StreakSticker {
             }));
             if (!done.await(10, TimeUnit.SECONDS)) return Boolean.FALSE;
             if (failure.get() != null) {
-                RuntimeLog.log("streak sticker failed: " + failure.get().getClass().getSimpleName());
+                // RuntimeLog.log("streak sticker failed: " + failure.get().getClass().getSimpleName());
                 return null;
             }
             return Boolean.TRUE;
@@ -134,7 +134,7 @@ final class StreakSticker {
             Thread.currentThread().interrupt();
             return Boolean.FALSE;
         } catch (Throwable error) {
-            RuntimeLog.log("streak sticker unavailable: " + error.getClass().getSimpleName());
+            // RuntimeLog.log("streak sticker unavailable: " + error.getClass().getSimpleName());
             return null;
         }
     }
@@ -174,7 +174,7 @@ final class StreakSticker {
             else if (source == null && (source = source(param, loader)) != null) args[i] = source;
         }
         if (source == null) {
-            RuntimeLog.log("streak sticker unavailable: send source not recognised");
+            // RuntimeLog.log("streak sticker unavailable: send source not recognised");
             return null;
         }
         return args;
@@ -228,7 +228,7 @@ final class StreakSticker {
             Thread.currentThread().interrupt();
             return Collections.emptyList();
         } catch (Throwable error) {
-            RuntimeLog.log("streak sticker favourites unavailable: " + error.getClass().getSimpleName());
+            // RuntimeLog.log("streak sticker favourites unavailable: " + error.getClass().getSimpleName());
             return Collections.emptyList();
         }
     }

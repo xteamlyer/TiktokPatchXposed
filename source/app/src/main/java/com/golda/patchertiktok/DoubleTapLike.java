@@ -24,6 +24,6 @@ final class DoubleTapLike {
             Class<?> handler = Hooks.findClass(name, loader);
             if (handler != null) hooks += Hooks.hookAll(handler, "handleDoubleClick", skip);
         }
-        RuntimeLog.log(hooks == 0 ? "double tap like unavailable: like panel not found" : "double tap like: hooks=" + hooks);
+        //RuntimeLog.log(hooks == 0 ? "double tap like unavailable: like panel not found" : "double tap like: hooks=" + hooks);
     }
 }

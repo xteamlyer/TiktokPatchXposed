@@ -31,16 +31,16 @@ final class OfflineMore {
             if (type != null && type.isEnum() && Reflect.method(type, "getCount") != null) choices = type;
         }
         if (choices == null) {
-            RuntimeLog.log("offline videos unavailable: choices not found");
+            // RuntimeLog.log("offline videos unavailable: choices not found");
             return;
         }
         int lists = hookLists(loader);
         if (lists == 0) {
-            RuntimeLog.log("offline videos unavailable: list not found");
+            // RuntimeLog.log("offline videos unavailable: list not found");
             return;
         }
         int answers = answer(choices, "getCount", COUNT) + answer(choices, "getMinutes", MINUTES) + answer(choices, "getSize", MEGABYTES);
-        RuntimeLog.log("offline videos: lists=" + lists + " answers=" + answers);
+        // RuntimeLog.log("offline videos: lists=" + lists + " answers=" + answers);
     }
 
     /** The list's getter: a static () -> List called by the methods that use the saved count. */

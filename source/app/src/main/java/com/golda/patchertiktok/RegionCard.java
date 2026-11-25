@@ -89,7 +89,7 @@ final class RegionCard {
                 if (handle((TextView) view, event)) return true;
             } catch (Throwable error) {
                 tracking = false;
-                Safe.log("region card", error);
+                // Safe.log("region card", error);
             }
             return previous != null && previous.onTouch(view, event);
         }

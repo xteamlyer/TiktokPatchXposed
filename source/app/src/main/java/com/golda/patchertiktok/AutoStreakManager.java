@@ -136,7 +136,7 @@ final class AutoStreakManager {
                 // Until TikTok has pulled new messages, a flame sent from another phone is not known here.
                 if (!StreakSentCheck.pulledSince(foregroundSince)) {
                     if (syncWaits++ < 6) schedule(20_000L);
-                    else RuntimeLog.log("streak check: messages not synced, nothing sent");
+                    else //RuntimeLog.log("streak check: messages not synced, nothing sent");
                     return;
                 }
                 lastCheckElapsed = SystemClock.elapsedRealtime();
@@ -146,7 +146,7 @@ final class AutoStreakManager {
             } catch (Throwable error) {
                 // A missing provider right after launch is retried; anything else stops quietly.
                 if (startupRetries++ < 2) schedule(60_000L);
-                RuntimeLog.log("streak check stopped: " + error.getClass().getSimpleName() + " " + error.getMessage());
+                //RuntimeLog.log("streak check stopped: " + error.getClass().getSimpleName() + " " + error.getMessage());
             } finally {
                 worker = null;
                 RUNNING.set(false);
@@ -191,14 +191,14 @@ final class AutoStreakManager {
                 }
             }
             if (current == null) {
-                RuntimeLog.log("streak window " + initial.window() + ": renewed meanwhile");
+                //RuntimeLog.log("streak window " + initial.window() + ": renewed meanwhile");
                 skipped++;
                 continue;
             }
             StreakApi.Candidate selected = current;
             // Already sent today, by hand or from another phone with the same account: the friend's turn.
             if (sentSince(account, selected) == StreakSentCheck.Answer.SENT) {
-                RuntimeLog.log("streak window " + selected.window() + ": already sent today");
+                //RuntimeLog.log("streak window " + selected.window() + ": already sent today");
                 skipped++;
                 continue;
             }
@@ -211,7 +211,7 @@ final class AutoStreakManager {
                     return false;
                 }
             });
-            RuntimeLog.log("streak window " + selected.window() + ": " + result);
+            //RuntimeLog.log("streak window " + selected.window() + ": " + result);
             if ("CONFIRMED".equals(result)) confirmed++;
             else if ("UNKNOWN".equals(result) || "RETRY".equals(result)) unresolved++;
             else skipped++;
@@ -223,11 +223,11 @@ final class AutoStreakManager {
         long next = Long.MAX_VALUE;
         long now = System.currentTimeMillis();
         for (Object item : items) next = Math.min(next, api.nextRiskMillis(item, now));
-        RuntimeLog.log("streak check: records=" + items.size() + " " + api.summary(items, now)
-                + " eligible=" + candidates.size() + " confirmed=" + confirmed + " unresolved=" + unresolved
-                + " skipped=" + skipped + " waiting=" + waiting
-                + (next == Long.MAX_VALUE ? "" : " nextRiskIn=" + (next - now) / 60_000L + "m")
-                + (waitUntil == Long.MAX_VALUE ? "" : " sendIn=" + (waitUntil - now) / 60_000L + "m"));
+        // RuntimeLog.log("streak check: records=" + items.size() + " " + api.summary(items, now)
+        //         + " eligible=" + candidates.size() + " confirmed=" + confirmed + " unresolved=" + unresolved
+        //         + " skipped=" + skipped + " waiting=" + waiting
+        //         + (next == Long.MAX_VALUE ? "" : " nextRiskIn=" + (next - now) / 60_000L + "m")
+        //         + (waitUntil == Long.MAX_VALUE ? "" : " sendIn=" + (waitUntil - now) / 60_000L + "m"));
         long delay = Long.MAX_VALUE;
         if (next != Long.MAX_VALUE) delay = Math.max(MIN_CHECK_INTERVAL_MS, next - now + between(60_000L, 600_000L));
         // The chosen time: a minute or two after it, like opening the chat when the reminder rings.
@@ -280,7 +280,7 @@ final class AutoStreakManager {
                 sentCheck = new StreakSentCheck(loader);
             } catch (Throwable error) {
                 sentCheckFailed = true;
-                RuntimeLog.log("streak sent check unavailable: " + error.getClass().getSimpleName() + " " + error.getMessage());
+                //RuntimeLog.log("streak sent check unavailable: " + error.getClass().getSimpleName() + " " + error.getMessage());
             }
         }
         StreakSentCheck check = sentCheck;

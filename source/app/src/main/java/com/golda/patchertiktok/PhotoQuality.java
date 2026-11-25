@@ -40,7 +40,7 @@ final class PhotoQuality {
                 hooks++;
             }
         }
-        RuntimeLog.log("photo quality: converters=" + hooks);
+        // RuntimeLog.log("photo quality: converters=" + hooks);
     }
 
     private static void upgrade(Object info) {

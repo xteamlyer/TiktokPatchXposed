@@ -733,7 +733,7 @@ public final class ModSettingsActivity extends Activity {
             try {
                 reposts = RepostCleaner.list(app);
             } catch (Exception error) {
-                RuntimeLog.log("repost cleaner: list failed, " + error);
+                // RuntimeLog.log("repost cleaner: list failed, " + error);
                 runOnUiThread(Safe.run("repost cleaner", () -> status.setText(String.format(locale, I18n.get(S.REPOST_PURGE_STOPPED), 0))));
                 return;
             }
@@ -767,7 +767,7 @@ public final class ModSettingsActivity extends Activity {
                     }
                 });
             } catch (Exception error) {
-                RuntimeLog.log("repost cleaner: stopped, " + error);
+                // RuntimeLog.log("repost cleaner: stopped, " + error);
             }
             int done = removed;
             runOnUiThread(Safe.run("repost cleaner", () -> {

@@ -49,14 +49,14 @@ final class Analytics {
         };
         Class<?> manager = Hooks.findClass("android.app.ApplicationPackageManager", null);
         int hooks = manager == null ? 0 : Hooks.hookAll(manager, "getApplicationInfo", switches);
-        RuntimeLog.log("trackers: metadata hooks=" + hooks);
+        //RuntimeLog.log("trackers: metadata hooks=" + hooks);
     }
 
     /** After Discovery.init: AppsFlyer, then TikTok's own uploads. */
     static void install(ClassLoader loader) {
         int appsFlyer = installAppsFlyer(loader);
         int applog = installAppLog(loader);
-        RuntimeLog.log("analytics: appsflyer=" + appsFlyer + " applog=" + applog);
+        //RuntimeLog.log("analytics: appsflyer=" + appsFlyer + " applog=" + applog);
     }
 
     private static int installAppsFlyer(ClassLoader loader) {

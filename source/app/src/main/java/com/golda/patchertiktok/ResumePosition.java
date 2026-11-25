@@ -37,7 +37,7 @@ final class ResumePosition {
     static void install(ClassLoader loader) {
         Class<?> panelType = Hooks.findClass(PANEL, loader);
         if (panelType == null) {
-            RuntimeLog.log("resume position unavailable: feed panel not found");
+            // RuntimeLog.log("resume position unavailable: feed panel not found");
             return;
         }
         currentAweme = RenderedAdSkip.currentAweme(panelType);
@@ -49,7 +49,7 @@ final class ResumePosition {
             }
         }
         if (currentAweme == null || playerAbility == null) {
-            RuntimeLog.log("resume position unavailable: player not found");
+            // RuntimeLog.log("resume position unavailable: player not found");
             return;
         }
         currentAweme.setAccessible(true);
@@ -67,7 +67,7 @@ final class ResumePosition {
             MAIN.removeCallbacks(SAMPLE);
             MAIN.postDelayed(SAMPLE, 1_000L);
         });
-        RuntimeLog.log("resume position: hooks=" + hooks);
+        // RuntimeLog.log("resume position: hooks=" + hooks);
     }
 
     private static void started(Object feedPanel) {
@@ -99,7 +99,7 @@ final class ResumePosition {
             try {
                 step();
             } catch (Throwable error) {
-                Safe.log("resume position", error);
+                // Safe.log("resume position", error);
             }
         }
 

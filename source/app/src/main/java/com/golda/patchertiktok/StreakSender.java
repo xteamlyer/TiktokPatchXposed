@@ -109,7 +109,7 @@ final class StreakSender {
                 callback.beforeDispatchFailure();
             } catch (Throwable unknown) {
                 callback.done.countDown();
-                RuntimeLog.log("send result unknown: " + unknown.getClass().getSimpleName());
+                // RuntimeLog.log("send result unknown: " + unknown.getClass().getSimpleName());
             }
         }));
         if (!posted) callback.beforeDispatchFailure();
@@ -179,7 +179,7 @@ final class StreakSender {
                     }
                     // A failure callback is terminal, but never proof that retrying is safe.
                     if (args.length == 3) {
-                        if (!confirmed) RuntimeLog.log("streak send failed: " + reason(args));
+                        if (!confirmed);
                         done.countDown();
                     }
                 }
@@ -224,7 +224,7 @@ final class StreakSender {
                     try {
                         ledger.finish(key, attempt, DeliveryLedger.State.CONFIRMED, System.currentTimeMillis());
                     } catch (RuntimeException error) {
-                        RuntimeLog.log("late confirmation storage failed");
+                        // RuntimeLog.log("late confirmation storage failed");
                     }
                 }));
             }

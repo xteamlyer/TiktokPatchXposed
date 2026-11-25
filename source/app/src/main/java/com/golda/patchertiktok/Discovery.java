@@ -56,7 +56,7 @@ final class Discovery {
             List<String> found = new ArrayList<>(finder().classesUsing(literal));
             saved = found.isEmpty() ? NONE : String.join(",", found);
             cache.edit().putString(key, saved).apply();
-            RuntimeLog.log("indexed \"" + literal + "\" in " + (System.currentTimeMillis() - start) + " ms: " + saved);
+            //RuntimeLog.log("indexed \"" + literal + "\" in " + (System.currentTimeMillis() - start) + " ms: " + saved);
         }
         return NONE.equals(saved) ? Collections.emptyList() : Arrays.asList(saved.split(","));
     }

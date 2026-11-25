@@ -57,7 +57,7 @@ final class HdUpload {
             hook(switched, true);
             hooks += 3;
         }
-        RuntimeLog.log("hd upload: owners=" + owners.size() + " hooks=" + hooks + ", bitrate=" + installBitrate(loader, readers));
+        // RuntimeLog.log("hd upload: owners=" + owners.size() + " hooks=" + hooks + ", bitrate=" + installBitrate(loader, readers));
     }
 
     private static final String SETTINGS = "com.ss.android.vesdk.VEVideoEncodeSettings";

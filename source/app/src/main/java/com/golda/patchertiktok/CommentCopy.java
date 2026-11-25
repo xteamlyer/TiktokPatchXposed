@@ -24,7 +24,7 @@ final class CommentCopy {
         Class<?> comment = Hooks.findClass(COMMENT, loader);
         Method getter = comment == null ? null : Reflect.method(comment, "getText");
         if (getter == null || getter.getReturnType() != String.class) {
-            RuntimeLog.log("comment copy unavailable: comment model not found");
+            //RuntimeLog.log("comment copy unavailable: comment model not found");
             return;
         }
         Hooks.hook(getter, new Hooks.Hook() {
@@ -46,7 +46,7 @@ final class CommentCopy {
                 if (!copied.equals(text)) param.args[0] = new ClipData(clip.getDescription(), new ClipData.Item(text));
             }
         });
-        RuntimeLog.log("comment copy: clipboard=" + clipboard);
+        //RuntimeLog.log("comment copy: clipboard=" + clipboard);
     }
 
     /** Called for every comment TikTok draws, so the common case returns right away. */

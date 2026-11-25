@@ -60,7 +60,7 @@ final class MessageTime {
             });
             hooks++;
         }
-        RuntimeLog.log("message time: binders=" + hooks);
+        // RuntimeLog.log("message time: binders=" + hooks);
     }
 
     /** The row's bind method: one model argument, not the bridge that takes Object, nor a view setter. */

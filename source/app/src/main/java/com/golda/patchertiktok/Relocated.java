@@ -56,7 +56,7 @@ final class Relocated {
         }
         FOUND.put(name, result);
         save(name, result);
-        if (!NONE.equals(result)) RuntimeLog.log("class moved: " + name + " -> " + result);
+        if (!NONE.equals(result));
         return result;
     }
 

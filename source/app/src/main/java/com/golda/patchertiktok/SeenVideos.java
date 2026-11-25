@@ -69,7 +69,7 @@ final class SeenVideos {
             }
         }
         if (Prefs.on(Prefs.HIDE_SEEN)) IO.execute(Safe.run("seen videos", SeenVideos::load));
-        RuntimeLog.log(hooks == 0 ? "seen videos unavailable: player progress not found" : "seen videos: hooks=" + hooks);
+        // RuntimeLog.log(hooks == 0 ? "seen videos unavailable: player progress not found" : "seen videos: hooks=" + hooks);
     }
 
     /** Whether the feed should leave this video out. */
@@ -132,7 +132,7 @@ final class SeenVideos {
                 } catch (EOFException end) {
                     // The whole file is read; a cut-off last id is simply dropped.
                 } catch (Exception error) {
-                    RuntimeLog.log("seen videos: list not read, " + error.getClass().getSimpleName());
+                    // RuntimeLog.log("seen videos: list not read, " + error.getClass().getSimpleName());
                 }
             }
         }

@@ -26,7 +26,7 @@ final class AvatarDownload {
         Class<?> screen = Hooks.findClass(SCREEN, loader);
         Class<?> user = Hooks.findClass(USER, loader);
         if (screen == null || user == null) {
-            RuntimeLog.log("avatar download unavailable: enlarged photo screen not found");
+            //RuntimeLog.log("avatar download unavailable: enlarged photo screen not found");
             return;
         }
         Class<?> avatarView = Hooks.findClass(AVATAR_VIEW, loader);
@@ -50,7 +50,7 @@ final class AvatarDownload {
             try {
                 return saveAvatar(activity, person, view);
             } catch (Throwable error) {
-                Safe.log("avatar download", error);
+                // Safe.log("avatar download", error);
                 return false;
             }
         };

@@ -125,8 +125,8 @@ final class Reflect {
         String name = type == null ? "?" : type.getName();
         if (!NOTED.add(name) || NOTED.size() > 50) return;
         try {
-            RuntimeLog.log("reflect: skipped " + (count < 0 ? "all members" : count + " member(s)") + " of " + name
-                    + ": " + error.getClass().getSimpleName() + ": " + error.getMessage());
+            // RuntimeLog.log("reflect: skipped " + (count < 0 ? "all members" : count + " member(s)") + " of " + name
+            //         + ": " + error.getClass().getSimpleName() + ": " + error.getMessage());
         } catch (Throwable ignored) { }
     }
 

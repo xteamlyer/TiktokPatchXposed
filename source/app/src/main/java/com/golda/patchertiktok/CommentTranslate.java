@@ -98,8 +98,8 @@ final class CommentTranslate {
             Hooks.hook(anchors.translate, manual);
             Hooks.hook(anchors.reset, manual);
             ready = true;
-            RuntimeLog.log("comment auto-translate: native cell hook installed");
-            RuntimeLog.log("comment auto-translate: native switch hooks=" + hookNativeSwitch(loader));
+            //RuntimeLog.log("comment auto-translate: native cell hook installed");
+            //RuntimeLog.log("comment auto-translate: native switch hooks=" + hookNativeSwitch(loader));
         } catch (Throwable error) {
             fail("anchors missing or ambiguous; feature skipped", error);
         }
@@ -185,7 +185,7 @@ final class CommentTranslate {
         String appCode = CommentTranslatePolicy.language(app);
         if (appCode.isEmpty() || !appCode.equals(CommentTranslatePolicy.language(target))) {
             if (UNSUPPORTED.compareAndSet(false, true)) {
-                RuntimeLog.log("comment auto-translate skipped: native target differs from app language or language missing");
+                //RuntimeLog.log("comment auto-translate skipped: native target differs from app language or language missing");
             }
             return false;
         }
@@ -404,8 +404,9 @@ final class CommentTranslate {
         ready = false;
         if (Looper.myLooper() == Looper.getMainLooper()) PENDING.clear();
         if (FAILED.compareAndSet(false, true)) {
-            try { RuntimeLog.log("comment auto-translate unavailable: " + message + " ("
-                    + error.getClass().getSimpleName() + ")"); }
+            try { //RuntimeLog.log("comment auto-translate unavailable: " + message + " ("
+                   // + error.getClass().getSimpleName() + ")"); 
+                    }
             catch (Throwable ignored) { }
         }
     }

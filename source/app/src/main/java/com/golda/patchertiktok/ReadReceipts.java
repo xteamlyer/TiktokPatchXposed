@@ -41,14 +41,14 @@ final class ReadReceipts {
         Class<?> request = Hooks.findClass(REQUEST, loader);
         Class<?> body = Hooks.findClass(BODY, loader);
         if (request == null || body == null) {
-            RuntimeLog.log("read receipts unavailable: IM models not found");
+            // RuntimeLog.log("read receipts unavailable: IM models not found");
             return;
         }
         int modern = installModern(loader, request);
         int legacy = installLegacy(loader, body);
         int replies = installReplies(loader);
-        RuntimeLog.log("read receipts: current=" + modern + " older=" + legacy + " read now=" + (force != null)
-                + " on reply=" + replies);
+        // RuntimeLog.log("read receipts: current=" + modern + " older=" + legacy + " read now=" + (force != null)
+        //         + " on reply=" + replies);
     }
 
     private static final String SEND_BODY = "com.bytedance.im.core.proto.SendMessageRequestBody";
@@ -200,7 +200,7 @@ final class ReadReceipts {
             force.invoke(sender, chat, conversation);
             UNSENT.remove(conversation);
         } catch (Throwable error) {
-            RuntimeLog.log("mark as read failed: " + error.getClass().getSimpleName());
+            // RuntimeLog.log("mark as read failed: " + error.getClass().getSimpleName());
         } finally {
             SENDING.remove();
         }

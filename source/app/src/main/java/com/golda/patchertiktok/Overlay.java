@@ -64,7 +64,7 @@ final class Overlay {
         Method setAlpha = declared(layer, "setAlpha", float.class);
         Method touch = declared(layer, "dispatchTouchEvent", android.view.MotionEvent.class);
         if (setAlpha == null || touch == null) {
-            RuntimeLog.log("overlay unavailable: interface layer not found");
+            //RuntimeLog.log("overlay unavailable: interface layer not found");
             return;
         }
         Hooks.hook(setAlpha, new Hooks.Hook() {
@@ -103,7 +103,7 @@ final class Overlay {
             schedule();
         })));
         Foreground.listen(Overlay::schedule);
-        RuntimeLog.log("overlay installed");
+        //RuntimeLog.log("overlay installed");
     }
 
     /**
@@ -127,8 +127,8 @@ final class Overlay {
             }
         }
         components = sides;
-        if (!kinds.containsValue("tako")) RuntimeLog.log("tako button not found");
-        if (!sides) RuntimeLog.log("overlay parts: components not found, hiding by position");
+        if (!kinds.containsValue("tako"));
+        if (!sides);
         if (methods.isEmpty()) return;
         Hooks.Hook hook = new Hooks.Hook() {
             @Override protected void after(Hooks.Call param) {
@@ -346,7 +346,7 @@ final class Overlay {
             try {
                 step();
             } catch (Throwable error) {
-                Safe.log("burn-in protection", error);
+                // Safe.log("burn-in protection", error);
             }
         }
 

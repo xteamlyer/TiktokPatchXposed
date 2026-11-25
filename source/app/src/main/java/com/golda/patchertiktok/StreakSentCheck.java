@@ -51,7 +51,7 @@ final class StreakSentCheck {
         }
         watching = hooks > 0;
         wanted = queriesUsedBySentCheck();
-        RuntimeLog.log("streak sync watch: " + hooks + ", sent query names " + wanted.size());
+        // RuntimeLog.log("streak sync watch: " + hooks + ", sent query names " + wanted.size());
     }
 
     /** True when TikTok finished a successful message pull at or after {@code elapsed}, or pulls cannot be watched. */
